@@ -1,7 +1,7 @@
 pipeline {
 agent any
 
-```
+
 stages {
 
     stage('Build WAR') {
@@ -32,7 +32,6 @@ stages {
     }
 
 }
-```
+
 
 }
-
