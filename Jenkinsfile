@@ -1,39 +1,38 @@
 pipeline {
-    agent any
+agent any
 
-    stages {
+```
+stages {
 
-        stage('Checkout') {
-            steps {
-                git url: 'https://github.com/YOUR-REPO.git', branch: 'main'
-            }
-        }
-
-        stage('Build WAR') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
-
-        stage('Trivy Scan') {
-            steps {
-                sh 'trivy fs .'
-            }
-        }
-
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t webapp:1.0 .'
-            }
-        }
-
-        stage('Run Container') {
-            steps {
-                sh '''
-                docker rm -f webapp || true
-                docker run -d -p 8081:8080 --name webapp webapp:1.0
-                '''
-            }
+    stage('Build WAR') {
+        steps {
+            sh 'mvn clean package'
         }
     }
+
+    stage('Trivy Scan') {
+        steps {
+            sh 'trivy fs .'
+        }
+    }
+
+    stage('Build Docker Image') {
+        steps {
+            sh 'docker build -t webapp:1.0 .'
+        }
+    }
+
+    stage('Run Container') {
+        steps {
+            sh '''
+            docker rm -f webapp || true
+            docker run -d -p 8081:8080 --name webapp webapp:1.0
+            '''
+        }
+    }
+
 }
+```
+
+}
+
