@@ -1,1 +1,1 @@
-<h1>DevOps CI/CD WAR Application</h1>
+<h1>Hello Client Application</h1>
